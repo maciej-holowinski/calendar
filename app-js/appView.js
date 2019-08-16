@@ -150,7 +150,7 @@ const appView = (function () {
       windowWidth = window.innerWidth;
       if (windowWidth <= 600) {
         calendarButton = createElement(
-          domElements.buttonsContainer,
+          domElements.headerContainer,
           "button",
           "calendar-button"
         );
@@ -162,7 +162,7 @@ const appView = (function () {
         calendarButtonImg.src = "img/app-icons/calendar.png";
 
         mapButton = createElement(
-          domElements.buttonsContainer,
+          domElements.headerContainer,
           "button",
           "map-button"
         );
