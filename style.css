@@ -230,7 +230,7 @@ body {
   padding-right: 30px;
 }
 
-.current-weather-desciption-container {
+.current-weather-description-container {
   padding-left: 30px;
   display: flex;
   justify-content: space-between;
@@ -974,22 +974,31 @@ body {
     margin-bottom: 15px;
     /* flex-direction: column; */
     align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 80%
   }
 
   .current-temperature {
     font-size: 3.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--white-color);
+    padding-bottom: 10px;
   }
 
   .detailed-forecast-container {
     /* position: absolute; */
     border: none;
     background-color: rgba(0, 0, 0, 0.4);
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
+
   }
 
   .detailed-forecast {
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
   }
 
   .detailed-forecast-item {
@@ -999,10 +1008,17 @@ body {
     justify-content: center;
     width: 100%;
     margin-bottom: 4px;
+    height: 30px;
+    width: 150px;
   }
 
   .current-weather-description {
     font-size: 2.5rem;
+  }
+
+  .current-weather-description-container {
+    padding: 10px 0 0 0;
+    display: flex;
   }
 
   .buttons-container {
