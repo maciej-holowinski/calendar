@@ -72,13 +72,13 @@ const appModel = (function () {
         });
     }
     getWeatherHourly(longitude, latitude) {
-      return fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=bb5707b9a02b5c08635c421eed9e2690`)
+      return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=bb5707b9a02b5c08635c421eed9e2690`)
         .then(response => response.json())
         .catch(error => console.error(error));
     }
 
     getCurrentWeather(longitude, latitude) {
-      return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=bb5707b9a02b5c08635c421eed9e2690`)
+      return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=bb5707b9a02b5c08635c421eed9e2690`)
         .then(response => response.json())
         .catch(error => console.error(error));
     }
