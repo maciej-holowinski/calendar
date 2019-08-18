@@ -527,6 +527,12 @@ const appView = (function () {
           ".weather-temperature"
         ).innerHTML = `${forecast[key]}&deg;c`;
       });
+      let tempList = document.querySelectorAll(".weather-temperature");
+      tempList.forEach(item => {
+        if (item.innerHTML == "") {
+          item.innerHTML = "N/A";
+        }
+      })
     },
 
     translateWeather: function (weatherDescription) {
@@ -568,16 +574,6 @@ const appView = (function () {
       domElements.currentTemperatureDescriptionIcon.src = `img/weather-icons/${this.chooseNightOrDay()}/${weatherDescription}.png`;
 
       domElements.currentDayIcon.src = `img/weather-icons/${this.chooseNightOrDay()}/${weatherDescription}.png`;
-
-
-      const sunnyIcon = L.icon({
-        iconUrl: "img/app-icons/location.png",
-        iconSize: [70, 100],
-        iconAnchor: [22, 94]
-      });
-      L.marker([51.936619, 15.508690], {
-        icon: sunnyIcon
-      }).addTo(map);
 
       currentWeatherDescription = weatherDescription;
     }

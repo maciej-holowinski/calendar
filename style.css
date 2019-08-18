@@ -350,7 +350,7 @@ body {
 .weather-temperature {
   font-size: 1.4rem;
   font-weight: 600;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .weather-hour {
@@ -983,6 +983,7 @@ body {
     border-right: none;
     border-bottom: 1px solid var(--white-color);
     padding-bottom: 10px;
+    padding-right: 0;
   }
 
   .detailed-forecast-container {
@@ -1008,6 +1009,7 @@ body {
     margin-bottom: 4px;
     height: 30px;
     width: 150px;
+    padding: 3px;
   }
 
   .current-weather-description {
@@ -1026,11 +1028,7 @@ body {
   }
 
   .weather-hour {
-    padding-right: 20px;
-  }
-
-  .weather-icon {
-    margin-right: 15px;
+    padding-right: 10px;
   }
 
   .btn {
@@ -1089,10 +1087,18 @@ body {
   .calendar-cell {
     font-size: 1.2rem;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     margin: 0;
     padding: 0;
+    padding: 5px 0;
+  }
+
+  .calendar-row {
+    flex: 1;
+  }
+  .available-day-icon {
+    padding-top: 20px;
   }
 
   .hours-header {

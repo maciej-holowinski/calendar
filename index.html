@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather App</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Weather App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- zalaczenie pliku CDN z Leaflet CSS  -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+  </head>
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- zalaczenie pliku CDN z Leaflet CSS  -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-</head>
-
-<body>
-  <!-- tutaj zaczyna się moje body :) -->
-  <div class="app-wrapper">
-    <div class="app-widget">
-      <div class="header-container">
-        <div class="header">
-          <img class="logo" src="img/logos/logo-orange.png" alt="logo" />
-          <div class="hello-text">Witaj,<span class="username"></span></div>
-        </div>
-
-        <div class="forecast-container">
-          <span class="day-description transparent-background"></span>
-          <div class="current-location-container margin-top-small transparent-background">
-            <img class="current-location-icon" src="img/app-icons/location-plain.png" alt="location icon" />
-            <span class="current-weather-location"></span>
+  <body>
+    <!-- tutaj zaczyna się moje body :) -->
+    <div class="app-wrapper">
+      <div class="app-widget">
+        <div class="header-container">
+          <div class="header">
+            <img class="logo" src="img/logos/logo-orange.png" alt="logo" />
+            <div class="hello-text">Witaj,<span class="username"></span></div>
           </div>
-          <div class="current-weather-container margin-top-small transparent-background">
-            <span class="current-temperature"></span>
-            <div class="current-weather-description-container">
-              <img class="current-weather-description-icon" src=img/weather-icons/night/rainy.png alt="clouds">
-              <span class="current-weather-description"></span>
+
+          <div class="forecast-container">
+            <span class="day-description transparent-background"></span>
+            <div
+              class="current-location-container margin-top-small transparent-background"
+            >
+              <img
+                class="current-location-icon"
+                src="img/app-icons/location-plain.png"
+                alt="location icon"
+              />
+              <span class="current-weather-location"></span>
             </div>
-          </div>
-          <!-- <div class="buttons-container margin-top-small">
+            <div
+              class="current-weather-container margin-top-small transparent-background"
+            >
+              <span class="current-temperature"></span>
+              <div class="current-weather-description-container">
+                <img class="current-weather-description-icon"
+                src=img/weather-icons/night/rainy.png alt="clouds">
+                <span class="current-weather-description"></span>
+              </div>
+            </div>
+            <!-- <div class="buttons-container margin-top-small">
             <button class="save-btn btn">
               <div class="button-icon"></div>
               <span class="button-text">zapisz</span>
@@ -48,118 +62,160 @@
               <span class="button-text">usuń</span>
             </button>
           </div> -->
-          <!-- <div class="notification-box">
+            <!-- <div class="notification-box">
             <div class="location-notification"></div>
             <div class="save-notification"></div>
           </div> -->
-        </div>
-        <div class="detailed-forecast-container">
-          <ul class="detailed-forecast">
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-24">00:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/night/rainy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-3">3:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/night/cloudy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-6">6:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/day/clear-sky.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-9">9:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/day/cloudy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-12">12:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/day/rainy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-15">15:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/day/rainy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-18">18:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/night/thunder.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-            <li class="detailed-forecast-item">
-              <span class="weather-hour weather-hour-21">21:00</span>
-              <div class="weather-container">
-                <img class="weather-icon" src="img/weather-icons/night/rainy.png" alt="clouds" />
-                <span class="weather-temperature"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="app-calendar">
-      <div class="calendar-container">
-        <div class="calendar-navigation-container">
-          <button class="navigation-button left-button">
-            <img src="img/app-icons/left.png" alt="left icon" class="navigation-button-icon" />
-          </button>
-          <select class="month-select">
-            <option class="month-option" value="Styczeń">Styczeń</option>
-            <option class="month-option" value="Luty">Luty</option>
-            <option class="month-option" value="Marzec">Marzec</option>
-            <option class="month-option" value="Kwiecień">Kwiecień</option>
-            <option class="month-option" value="Maj">Maj</option>
-            <option class="month-option" value="Czerwiec">Czerwiec</option>
-            <option class="month-option" value="Lipiec">Lipiec</option>
-            <option class="month-option" value="Sierpień">Sierpień</option>
-            <option class="month-option" value="Wrzesień">Wrzesień</option>
-            <option class="month-option" value="Pażdziernik">Pażdziernik</option>
-            <option class="month-option" value="Listopad">Listopad</option>
-            <option class="month-option" value="Grudzień">Grudzień</option>
-          </select>
-          <select class="year-select">
-            <option class="year-option" value="2016">2016</option>
-            <option class="year-option" value="2017">2017</option>
-            <option class="year-option" value="2018">2018</option>
-            <option class="year-option" value="2019">2019</option>
-            <option class="year-option" value="2020">2020</option>
-            <option class="year-option" value="2021">2021</option>
-          </select>
-          <button class="navigation-button right-button">
-            <img src="img/app-icons/right.png" alt="right icon" class="navigation-button-icon" />
-          </button>
-        </div>
-        <div class="calendar">
-          <div class="calendar-header">
-            <div class="calendar-header-cell">pn</div>
-            <div class="calendar-header-cell">wt</div>
-            <div class="calendar-header-cell">śr</div>
-            <div class="calendar-header-cell">czw</div>
-            <div class="calendar-header-cell">pt</div>
-            <div class="calendar-header-cell">sob</div>
-            <div class="calendar-header-cell">niedz</div>
+          </div>
+          <div class="detailed-forecast-container">
+            <ul class="detailed-forecast">
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-24">00:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/night/rainy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-3">3:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/night/cloudy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-6">6:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/day/clear-sky.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-9">9:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/day/cloudy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-12">12:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/day/rainy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-15">15:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/day/rainy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-18">18:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/night/thunder.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+              <li class="detailed-forecast-item">
+                <span class="weather-hour weather-hour-21">21:00</span>
+                <div class="weather-container">
+                  <!-- <img
+                    class="weather-icon"
+                    src="img/weather-icons/night/rainy.png"
+                    alt="clouds"
+                  /> -->
+                  <span class="weather-temperature"></span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <!-- <div class="hours">
+      <div class="app-calendar">
+        <div class="calendar-container">
+          <div class="calendar-navigation-container">
+            <button class="navigation-button left-button">
+              <img
+                src="img/app-icons/left.png"
+                alt="left icon"
+                class="navigation-button-icon"
+              />
+            </button>
+            <select class="month-select">
+              <option class="month-option" value="Styczeń">Styczeń</option>
+              <option class="month-option" value="Luty">Luty</option>
+              <option class="month-option" value="Marzec">Marzec</option>
+              <option class="month-option" value="Kwiecień">Kwiecień</option>
+              <option class="month-option" value="Maj">Maj</option>
+              <option class="month-option" value="Czerwiec">Czerwiec</option>
+              <option class="month-option" value="Lipiec">Lipiec</option>
+              <option class="month-option" value="Sierpień">Sierpień</option>
+              <option class="month-option" value="Wrzesień">Wrzesień</option>
+              <option class="month-option" value="Pażdziernik"
+                >Pażdziernik</option
+              >
+              <option class="month-option" value="Listopad">Listopad</option>
+              <option class="month-option" value="Grudzień">Grudzień</option>
+            </select>
+            <select class="year-select">
+              <option class="year-option" value="2016">2016</option>
+              <option class="year-option" value="2017">2017</option>
+              <option class="year-option" value="2018">2018</option>
+              <option class="year-option" value="2019">2019</option>
+              <option class="year-option" value="2020">2020</option>
+              <option class="year-option" value="2021">2021</option>
+            </select>
+            <button class="navigation-button right-button">
+              <img
+                src="img/app-icons/right.png"
+                alt="right icon"
+                class="navigation-button-icon"
+              />
+            </button>
+          </div>
+          <div class="calendar">
+            <div class="calendar-header">
+              <div class="calendar-header-cell">pn</div>
+              <div class="calendar-header-cell">wt</div>
+              <div class="calendar-header-cell">śr</div>
+              <div class="calendar-header-cell">czw</div>
+              <div class="calendar-header-cell">pt</div>
+              <div class="calendar-header-cell">sob</div>
+              <div class="calendar-header-cell">niedz</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="hours">
           <img src="img/app-icons/clock.png" alt="clock" class="hours-icon" />
           <h3 class="hours-header">godzina</h3>
           <label
@@ -212,33 +268,38 @@
             /><span class="hour">24:00</span></label
           >
         </div> -->
-    </div>
-    <div class="app-map">
-      <div id="map-container"></div>
+      </div>
+      <div class="app-map">
+        <div id="map-container"></div>
 
-      <div class="location-container">
-        <img src="img/app-icons/location.png" alt="location icon" class="location-icon" />
+        <div class="location-container">
+          <img
+            src="img/app-icons/location.png"
+            alt="location icon"
+            class="location-icon"
+          />
 
-        <h3 class="location-header">Aktualna lokalizacja</h3>
-        <span class="location-current">Zielona Góra</span>
-        <div class="slider-box">
+          <h3 class="location-header">Aktualna lokalizacja</h3>
+          <span class="location-current">Zielona Góra</span>
+          <!-- <div class="slider-box">
           <label class="location-switch">
             <input class="hiddenBox" type="checkbox" hidden />
             <span class="slider"></span>
           </label>
           <span class="slider-label">zablokuj</span>
+        </div> -->
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- zalaczenie pliku CDN z Leaflet JS  -->
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-    crossorigin=""></script>
-  <script src="app-js/appModel.js"></script>
-  <script src="app-js/appView.js"></script>
-  <script src="app-js/appController.js"></script>
-</body>
-
+    <!-- zalaczenie pliku CDN z Leaflet JS  -->
+    <script
+      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""
+    ></script>
+    <script src="app-js/appModel.js"></script>
+    <script src="app-js/appView.js"></script>
+    <script src="app-js/appController.js"></script>
+  </body>
 </html>

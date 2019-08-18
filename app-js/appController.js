@@ -137,13 +137,13 @@ const appController = (function (modelCtrl, viewCtrl) {
         });
 
         //obserwator dla pola odblokuj, zablokuj (checkbox)
-        domElements.hiddenCheckbox.addEventListener("change", () => {
-            if (domElements.hiddenCheckbox.checked) {
-                domElements.sliderLabel.innerHTML = "odblokuj"
-            } else {
-                domElements.sliderLabel.innerHTML = "zablokuj"
-            }
-        });
+        // domElements.hiddenCheckbox.addEventListener("change", () => {
+        //     if (domElements.hiddenCheckbox.checked) {
+        //         domElements.sliderLabel.innerHTML = "odblokuj"
+        //     } else {
+        //         domElements.sliderLabel.innerHTML = "zablokuj"
+        //     }
+        // });
     }
 
     function generateEventListener(eventType, element, callback) {
@@ -277,12 +277,8 @@ const appController = (function (modelCtrl, viewCtrl) {
 
     async function generateTodayForecast() {
         const weatherList = await modelCtrl.getWeatherList();
-
-        console.log("---->", weatherList);
-
         const today = new Date().toLocaleDateString()
-
-        console.log("---->", today);
+        console.log(weatherList[today]);
         viewCtrl.updateWeather(weatherList[today])
     }
 
