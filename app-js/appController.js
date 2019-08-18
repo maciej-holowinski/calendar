@@ -12,16 +12,11 @@ const appController = (function (modelCtrl, viewCtrl) {
             var touchObject = event.changedTouches[0];
             startX = touchObject.pageX;
             startY = touchObject.pageY;
-            event.preventDefault();
         });
-        domElements.applicationWidget.addEventListener("touchmove", (event) => {
-            event.preventDefault();
-        });
+
         domElements.applicationWidget.addEventListener("touchend", (event) => {
-            event.preventDefault();
             var touchObject = event.changedTouches[0];
             distance = touchObject.pageX - startX;
-            console.log(distance);
 
             if (distance > 150) {
                 domElements.appCalendar.classList.toggle("app-calendar-active");
@@ -37,13 +32,10 @@ const appController = (function (modelCtrl, viewCtrl) {
             var touchObject = event.changedTouches[0];
             startX = touchObject.pageX;
             startY = touchObject.pageY;
-            event.preventDefault();
         });
-        domElements.appCalendar.addEventListener("touchmove", (event) => {
-            event.preventDefault();
-        });
+
         domElements.appCalendar.addEventListener("touchend", (event) => {
-            event.preventDefault();
+
             var touchObject = event.changedTouches[0];
             distance = touchObject.pageX - startX;
 
@@ -56,13 +48,10 @@ const appController = (function (modelCtrl, viewCtrl) {
             var touchObject = event.changedTouches[0];
             startX = touchObject.pageX;
             startY = touchObject.pageY;
-            event.preventDefault();
         });
-        domElements.appMap.addEventListener("touchmove", (event) => {
-            event.preventDefault();
-        });
+
         domElements.appMap.addEventListener("touchend", (event) => {
-            event.preventDefault();
+
             var touchObject = event.changedTouches[0];
             distance = touchObject.pageX - startX;
 
