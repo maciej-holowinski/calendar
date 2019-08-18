@@ -7,6 +7,70 @@ const appController = (function (modelCtrl, viewCtrl) {
 
     //tu umieszczamy obserwator zdarzeń
     function setupEventListeners() {
+        let startX, startY, distance;
+        domElements.applicationWidget.addEventListener("touchstart", (event) => {
+            var touchObject = event.changedTouches[0];
+            startX = touchObject.pageX;
+            startY = touchObject.pageY;
+            event.preventDefault();
+        });
+        domElements.applicationWidget.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        });
+        domElements.applicationWidget.addEventListener("touchend", (event) => {
+            event.preventDefault();
+            var touchObject = event.changedTouches[0];
+            distance = touchObject.pageX - startX;
+            console.log(distance);
+
+            if (distance > 150) {
+                domElements.appCalendar.classList.toggle("app-calendar-active");
+                domElements.rightWhiteButton.classList.toggle("right-white-button-moved");
+            }
+            if (distance < -150) {
+                domElements.appMap.classList.toggle("app-map-active");
+                domElements.leftWhiteButton.classList.toggle("left-white-button-moved");
+            }
+        });
+
+        domElements.appCalendar.addEventListener("touchstart", (event) => {
+            var touchObject = event.changedTouches[0];
+            startX = touchObject.pageX;
+            startY = touchObject.pageY;
+            event.preventDefault();
+        });
+        domElements.appCalendar.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        });
+        domElements.appCalendar.addEventListener("touchend", (event) => {
+            event.preventDefault();
+            var touchObject = event.changedTouches[0];
+            distance = touchObject.pageX - startX;
+
+            if (distance < -150) {
+                domElements.appCalendar.classList.toggle("app-calendar-active");
+            }
+        });
+
+        domElements.appMap.addEventListener("touchstart", (event) => {
+            var touchObject = event.changedTouches[0];
+            startX = touchObject.pageX;
+            startY = touchObject.pageY;
+            event.preventDefault();
+        });
+        domElements.appMap.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+        });
+        domElements.appMap.addEventListener("touchend", (event) => {
+            event.preventDefault();
+            var touchObject = event.changedTouches[0];
+            distance = touchObject.pageX - startX;
+
+            if (distance > 150) {
+                domElements.appMap.classList.toggle("app-map-active");
+            }
+        });
+
 
         //obserwator dla przycisku "wstecz" kalendarza
         domElements.leftButton.addEventListener("click", () => {
