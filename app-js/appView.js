@@ -491,7 +491,7 @@ const appView = (function () {
       console.log(appModel.getPosition);
       const sunnyIcon = L.icon({
         iconUrl: "img/app-icons/location.png",
-        iconSize: [44, 48],
+        iconSize: [48, 48],
         iconAnchor: [22, 94]
       });
       L.marker([latitude, longitude], {

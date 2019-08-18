@@ -244,6 +244,7 @@ body {
 
 .current-weather-description {
   font-size: 3.5rem;
+  text-align: center;
 }
 
 .buttons-container {
@@ -275,7 +276,7 @@ body {
   border: 2px solid var(--orange-color);
 }
 
-.btn:hover > .button-icon {
+.btn:hover>.button-icon {
   border-right: 2px solid var(--orange-color);
 }
 
@@ -287,23 +288,23 @@ body {
   border-radius: 10px 0 0 10px;
 }
 
-.save-btn > .button-icon {
+.save-btn>.button-icon {
   background: url("img/app-icons/save-white.png") no-repeat;
   background-size: 40%;
   background-position: center center;
 }
 
-.delete-btn > .button-icon {
+.delete-btn>.button-icon {
   background: url("img/app-icons/delete-white.png") no-repeat;
   background-size: 50%;
   background-position: center center;
 }
 
-.save-btn > span {
+.save-btn>span {
   padding-left: 12px;
 }
 
-.delete-btn > span {
+.delete-btn>span {
   padding-left: 17px;
 }
 
@@ -470,7 +471,7 @@ body {
   padding: 0 0 10px 40px;
 }
 
-.calendar-header > .calendar-header-cell {
+.calendar-header>.calendar-header-cell {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 1.4rem;
@@ -580,15 +581,15 @@ body {
   opacity: 0;
 }
 
-.hour-radio-input:checked + .hour:before {
+.hour-radio-input:checked+.hour:before {
   opacity: 0;
 }
 
-.hour-radio-input:checked + .hour:after {
+.hour-radio-input:checked+.hour:after {
   opacity: 1;
 }
 
-.hour-radio-input:checked + .hour {
+.hour-radio-input:checked+.hour {
   font-weight: 500;
   font-size: 1.4rem;
 }
@@ -673,11 +674,11 @@ body {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
 }
 
-.location-switch input:checked + .slider {
+.location-switch input:checked+.slider {
   background-color: var(--orange-color);
 }
 
-.location-switch input:checked + .slider::before {
+.location-switch input:checked+.slider::before {
   transform: translateX(28px);
 }
 
@@ -733,11 +734,11 @@ body {
     width: 70px;
   }
 
-  .save-btn > .button-text {
+  .save-btn>.button-text {
     padding-left: 8px;
   }
 
-  .delete-btn > .button-text {
+  .delete-btn>.button-text {
     padding-left: 12px;
   }
 
@@ -823,6 +824,7 @@ body {
 }
 
 @media only screen and (max-width: 700px) {
+
   /* For tablets: */
   .app-calendar {
     flex-direction: column;
@@ -1054,12 +1056,13 @@ body {
   }
 
   .location-header {
-    display: none;
+    margin-right: 10px;
   }
 
   .location-current {
     font-size: 1.6rem;
     font-weight: 600;
+    margin-right: 10px;
   }
 
   .location-icon {
@@ -1097,6 +1100,7 @@ body {
   .calendar-row {
     flex: 1;
   }
+
   .available-day-icon {
     padding-top: 20px;
   }
