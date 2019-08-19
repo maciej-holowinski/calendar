@@ -4,7 +4,6 @@ const appController = (function (modelCtrl, viewCtrl) {
 
     let domElements = appView.getDomElements();
 
-
     //tu umieszczamy obserwator zdarzeń
     function setupEventListeners() {
         let startX, startY, distance;
@@ -35,7 +34,6 @@ const appController = (function (modelCtrl, viewCtrl) {
         });
 
         domElements.appCalendar.addEventListener("touchend", (event) => {
-
             var touchObject = event.changedTouches[0];
             distance = touchObject.pageX - startX;
 
@@ -44,14 +42,13 @@ const appController = (function (modelCtrl, viewCtrl) {
             }
         });
 
-        domElements.appMap.addEventListener("touchstart", (event) => {
+        domElements.locationContainer.addEventListener("touchstart", (event) => {
             var touchObject = event.changedTouches[0];
             startX = touchObject.pageX;
             startY = touchObject.pageY;
         });
 
-        domElements.appMap.addEventListener("touchend", (event) => {
-
+        domElements.locationContainer.addEventListener("touchend", (event) => {
             var touchObject = event.changedTouches[0];
             distance = touchObject.pageX - startX;
 
@@ -188,15 +185,6 @@ const appController = (function (modelCtrl, viewCtrl) {
 
             }
         });
-
-        //obserwator dla pola odblokuj, zablokuj (checkbox)
-        // domElements.hiddenCheckbox.addEventListener("change", () => {
-        //     if (domElements.hiddenCheckbox.checked) {
-        //         domElements.sliderLabel.innerHTML = "odblokuj"
-        //     } else {
-        //         domElements.sliderLabel.innerHTML = "zablokuj"
-        //     }
-        // });
     }
 
     function generateEventListener(eventType, element, callback) {
@@ -314,24 +302,9 @@ const appController = (function (modelCtrl, viewCtrl) {
         );
     }
 
-
-
-
-    // function generetaEventsForAvailableDays(availableForecastDays) {
-
-    //     for (let object of availableForecastDays) {
-    //         generateEventListener("click", object, eventWatherDisplay);
-    //     }
-    // }
-
-    // function eventWatherDisplay() {
-    //     console.log("YUP");
-    // }
-
     async function generateTodayForecast() {
         const weatherList = await modelCtrl.getWeatherList();
         const today = new Date().toLocaleDateString()
-        console.log(weatherList[today]);
         viewCtrl.updateWeather(weatherList[today])
     }
 
@@ -380,11 +353,6 @@ const appController = (function (modelCtrl, viewCtrl) {
                 month = new Date().getMonth();
             appView.fillCalendarInputs(year, month);
 
-            // let availableForecastDays = generateCalendar(year, month);
-
-
-            // generetaEventsForAvailableDays(availableForecastDays);
-
             generateTodayForecast();
 
             generateCurrentWeather()
@@ -396,9 +364,6 @@ const appController = (function (modelCtrl, viewCtrl) {
             viewCtrl.setUserName(modelCtrl.isNewUser());
 
             viewCtrl.displayDate();
-
-
-
         }
     };
 })(appModel, appView);

@@ -4,6 +4,7 @@ const appView = (function () {
   //Deklaruję obiekt przechowujący referencje do istniejących elementów DOM
   const domElements = {
     applicationWrapper: document.querySelector(".app-wrapper"),
+    locationContainer: document.querySelector(".location-container"),
     applicationWidget: document.querySelector(".app-widget"),
     appCalendar: document.querySelector(".app-calendar"),
     appMap: document.querySelector(".app-map"),
@@ -287,56 +288,12 @@ const appView = (function () {
         firstDayOfMonth,
         daysInMonth
       } = getDays(year, month);
-      console.log(daysInMonth);
+
       //pobieram dane dnia dzisiejszego
       actualDate = new Date();
       currentMonth = actualDate.getMonth();
       currentYear = actualDate.getFullYear();
       currentDay = new Date().getDate();
-
-      // class Day {
-      //   constructor(day, month, year) {
-      //     this.day = day;
-      //     this.month = month;
-      //     this.year = year;
-      //   }
-      // }
-
-      // let nextMonth = false,
-      //   nextYear = false
-      // availableDay = currentDay,
-      //   availableMonth = currentMonth,
-      //   availableYear = currentYear;
-      // fixedNumberOfDaysInMonth = !fixedNumberOfDaysInMonth ? daysInMonth : fixedNumberOfDaysInMonth;
-      // tmp = fixedNumberOfDaysInMonth;
-
-      // for (let i = 0; i < 5; i++) {
-
-      //   if (nextMonth == true) {
-
-      //     availableDay = 1;
-
-      //     availableMonth = availableMonth == 11 ? 0 : availableMonth + 1;
-      //     nextMonth = false;
-
-      //     tmp = new Date(availableYear, availableMonth + 1, 0).getDate()
-
-      //     if (nextYear == true) {
-      //       availableYear++;
-      //     }
-      //   }
-
-      //   availableForecastDays[i] = new Day(availableDay, availableMonth, availableYear);
-
-      //   if (availableForecastDays[i].day == tmp) {
-      //     nextMonth = true;
-      //     if (availableMonth == 11) {
-      //       nextYear = true;
-      //     }
-      //   }
-      //   availableDay++;
-
-      // }
 
       dayNumber = 1;
       //wypełniam komórki kalendarza dniami
@@ -368,33 +325,8 @@ const appView = (function () {
           domElements.calendarDays[i].textContent = dayNumber;
         }
 
-        // console.log(dayNumber, month, year)
-        // let tmp = {
-        //   day: dayNumber,
-        //   month: month,
-        //   year: parseInt(year)
-        // };
-        // // console.log(tmp);
-        // let x = availableForecastDays.findIndex((el) => {
-
-        //   return (el.day == tmp.day && el.month == tmp.month && el.year === tmp.year)
-
-        // });
-        // // console.log(x);
-
-        // if (x != -1) {
-
-        //   let img = document.createElement("img");
-        //   img.src = "img/app-icons/weather.png";
-        //   img.classList.add("available-day-icon");
-        //   domElements.calendarDays[i].appendChild(img);
-        //   availableForecastDaysForEvents.push(domElements.calendarDays[i]);
-        // }
-
         dayNumber++;
       }
-
-      // return availableForecastDaysForEvents;
     },
 
     //funkcja usuwa komórki kalendarza
@@ -488,7 +420,7 @@ const appView = (function () {
 
     launchMap: function (latitude, longitude) {
       let mymap = L.map("map-container").setView([latitude, longitude], 13);
-      console.log(appModel.getPosition);
+
       const sunnyIcon = L.icon({
         iconUrl: "img/app-icons/location.png",
         iconSize: [48, 48],
@@ -511,7 +443,6 @@ const appView = (function () {
     },
 
     displayCity: function (currentCity) {
-      console.log(domElements.currentLocation, currentCity);
       domElements.currentLocation.textContent = currentCity;
       domElements.currentWeatherLocation.textContent = currentCity;
     },
@@ -567,7 +498,7 @@ const appView = (function () {
     updateActualWeather: function (currentWeather, weatherDescription) {
 
       let polishWeatherDescription = this.translateWeather(weatherDescription);
-      console.log(polishWeatherDescription);
+
       domElements.currentTemperature.innerHTML = `${currentWeather}&deg;c`;
       domElements.currentTemperatureDescription.innerHTML = polishWeatherDescription;
 
